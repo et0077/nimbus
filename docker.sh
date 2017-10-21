@@ -9,8 +9,7 @@ chown -R nimbus:nimbus /home/et
 cd /home/nimbus
 
 ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> ~/.ssh/known_hosts
-lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "ge
-t /home/et/nimbus.tar.gz; bye"
+lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/et/nimbus.tar.gz; bye"
 
 tar zxvf /home/et/nimbus.tar.gz
 rm /home/et/nimbus.tar.gz
