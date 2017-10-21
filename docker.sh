@@ -1,4 +1,5 @@
 #/bin/bash
+sudo su -
 apt install docker.io --assume-yes
 apt install docker-compose --assume-yes
 apt install lftp --assume-yes
@@ -8,7 +9,7 @@ ln -s /home/nimbus /home/et
 chown -R nimbus:nimbus /home/et
 cd /home/nimbus
 
-ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> ~/.ssh/known_hosts
+ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> /root/.ssh/known_hosts
 lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/et/nimbus.tar.gz; bye"
 
 tar zxvf /home/et/nimbus.tar.gz
