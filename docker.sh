@@ -1,13 +1,17 @@
 #/bin/bash
 apt install docker.io --assume-yes
 apt install docker-compose --assume-yes
-apt install sshpass --assume-yes
+apt install lftp --assume-yes
 /etc/init.d/docker start
 
 ln -s /home/nimbus /home/et
 chown -R nimbus:nimbus /home/et
 cd /home/nimbus
-sshpass -p "nimbusPassw0rd123" scp nimbus@octane.westeurope.cloudapp.azure.com:/home/et/nimbus.tar.gz /home/et
+
+ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> ~/.ssh/known_hosts
+lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "ge
+t /home/et/nimbus.tar.gz; bye"
+
 tar zxvf /home/et/nimbus.tar.gz
 rm /home/et/nimbus.tar.gz
 cp proxy.conf.MASTER proxy.conf
