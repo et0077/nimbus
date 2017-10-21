@@ -2,18 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentna.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Admin username"
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Admin password"
-            }
-        },
         "dnsLabelPrefixJenkins": {
             "type": "string",
             "metadata": {
@@ -75,9 +63,11 @@
         "publicIPAddressName3AOSAccount": "myPublicIP3AOSAccount",
         "publicIPAddressName4AOS": "myPublicIP4AOS",
         "publicIPAddressName5MC": "myPublicIP5MC",
-        "publicIPAddressName6ALM": "myPublicIP6",
+        "publicIPAddressName6ALM": "myPublicIP6ALM",
         "publicIPAddressName7IntelliJ": "myPublicIP7IntelliJ",
         "vmName": "nimbus",
+        "vmID": "nimbus",
+        "vmPSW": "nimbusPassw0rd123",
         "vmSize": "Standard_DS3_v2",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
@@ -317,8 +307,8 @@
                 },
                 "osProfile": {
                     "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
+                    "adminUsername": "[variables('vmID')]",
+                    "adminPassword": "[variables('vmPSW')]"
                 },
                 "storageProfile": {
                     "imageReference": {
@@ -342,7 +332,30 @@
                     ]
                 }
             }
-        }
+        },
+        {
+        "type": "Microsoft.Compute/virtualMachines/extensions", 
+       "name": "[concat(variables('vmName'),'/docker')]", 
+    "apiVersion": "2015-05-01-preview", 
+    "location": "[resourceGroup().location]",
+    "dependsOn": [ 
+    "[variables('vmName')]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
+        ],
+        "commandToExecute": "sh docker.sh",
+        "commandToExecute": "touch et.et",
+        "commandToExecute": "sh docker.sh"
+      }
+    }
+    }
     ],
     "outputs": {
         "hostname": {
