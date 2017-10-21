@@ -1,7 +1,7 @@
 #/bin/bash
 apt install docker.io --assume-yes
 apt install docker-compose --assume-yes
-apt install sshpass --asume-yes
+apt install sshpass --assume-yes
 /etc/init.d/docker start
 
 ln -s /home/nimbus /home/et
