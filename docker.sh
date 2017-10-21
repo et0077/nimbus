@@ -1,12 +1,13 @@
 #/bin/bash
 apt install docker.io --assume-yes
 apt install docker-compose --assume-yes
+apt install sshpass --asume-yes
 /etc/init.d/docker start
 
 ln -s /home/nimbus /home/et
 chown -R nimbus:nimbus /home/et
 cd /home/nimbus
-scp nimbus@octane.westeurope.cloudapp.azure.com:/home/et/nimbus.tar.gz /home/et
+sshpass -p "nimbusPassw0rd123" scp nimbus@octane.westeurope.cloudapp.azure.com:/home/et/nimbus.tar.gz /home/et
 tar zxvf /home/et/nimbus.tar.gz
 rm /home/et/nimbus.tar.gz
 cp proxy.conf.MASTER proxy.conf
