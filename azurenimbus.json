@@ -68,7 +68,7 @@
         "vmName": "nimbus",
         "vmID": "nimbus",
         "vmPSW": "nimbusPassw0rd123",
-        "vmSize": "Standard_DS3_v2",
+        "vmSize": "Standard_DS12_v2",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
     },
