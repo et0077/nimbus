@@ -5,15 +5,13 @@ apt install docker-compose --assume-yes
 apt install lftp --assume-yes
 /etc/init.d/docker start
 
-ln -s /home/nimbus /home/et
-chown -R nimbus:nimbus /home/et
 cd /home/nimbus
 
 ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> /root/.ssh/known_hosts
-lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/et/nimbus.tar.gz; bye"
+lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/nimbus/nimbus.tar.gz; bye"
 
-tar zxvf /home/et/nimbus.tar.gz
-rm /home/et/nimbus.tar.gz
+tar zxvf /home/nimbus/nimbus.tar.gz
+rm /home/nimbus/nimbus.tar.gz
 cp proxy.conf.MASTER proxy.conf
 
 docker login --username="et007" --password="3Milian)"
@@ -33,5 +31,5 @@ docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=
 #docker run -d --name alm --hostname alm.aos.com --net demo-net --shm-size=2g admpresales/azure:alm
 docker run -d --name proxy -p 80:80 --net demo-net -v /home/et/proxy.conf:/etc/nginx/conf.d/default.conf admpresales/azure:nginx
 docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpresales/aos-postgres:1.1.2
-docker run -d --name aos_accountservice --hostname aosaccount.aos.com -e "POSTGRES_PORT=5432" -e "POSTGRES_IP=aos_postgres" -e "MAIN_PORT=80" -e "ACCOUNT_PORT=80" -e 'MAIN_IP=nimbusaos.westeurope.cloudapp.azure.com' -e "ACCOUNT_IP=nimbusaosaccount.westeurope.cloudapp.azure.com" -e "PGPASSWORD=admin" --net demo-net admpresales/aos-accountservice:1.1.2
-docker run -d --name aos_main --hostname aosweb.aos.com -e "POSTGRES_PORT=5432" -e "POSTGRES_IP=aos_postgres" -e "MAIN_PORT=80" -e "ACCOUNT_PORT=80" -e 'MAIN_IP=nimbusaos.westeurope.cloudapp.azure.com' -e "ACCOUNT_IP=nimbusaosaccount.westeurope.cloudapp.azure.com" -e "PGPASSWORD=admin" --net demo-net admpresales/aos-main-app:1.1.2
+
+./launchAOS.sh
