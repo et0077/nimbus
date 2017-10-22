@@ -25,6 +25,8 @@ ifconfig eth0:4 inet 10.0.0.8
 ifconfig eth0:4 inet 10.0.0.9	
 ifconfig eth0:4 inet 10.0.0.10
 
+./changeProxy.sh
+
 docker run -d --name devops -v /home/nimbus/jobs:/var/lib/jenkins/jobs --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
 docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
 #docker run -d --hostname mc.aos.com --name mc --net demo-net --shm-size=2g admpresales/azure:mc
@@ -33,3 +35,4 @@ docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/e
 docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpresales/aos-postgres:1.1.2
 
 ./launchAOS.sh
+./launchAOSnew2
