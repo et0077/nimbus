@@ -22,7 +22,7 @@ ifconfig eth0:1 inet 10.0.0.5
 ifconfig eth0:2 inet 10.0.0.6
 ifconfig eth0:3 inet 10.0.0.7
 ifconfig eth0:5 inet 10.0.0.8
-ifconfig eth0:6 inet 10.0.0.9	
+ifconfig eth0:6 inet 10.0.0.9
 ifconfig eth0:7 inet 10.0.0.10
 
 ./changeProxy.sh
