@@ -33,7 +33,7 @@ docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpre
 ./launchAOSnew2
 
 
-docker run -d --name devops -v /home/nimbus/jobs:/var/lib/jenkins/jobs --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
+docker run -d --name devops -v /home/nimbus/jobs:/var/lib/jenkins/jobs -p 2022:22 --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
 docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
 #docker run -d --hostname mc.aos.com --name mc --net demo-net --shm-size=2g admpresales/azure:mc
 #docker run -d --name alm --hostname alm.aos.com --net demo-net --shm-size=2g admpresales/azure:alm
