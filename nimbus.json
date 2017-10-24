@@ -68,7 +68,7 @@
         "vmName": "nimbus",
         "vmID": "nimbus",
         "vmPSW": "nimbusPassw0rd123",
-        "vmSize": "Standard_DS3_v2",
+        "vmSize": "Standard_DS11_v2",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
     },
@@ -318,7 +318,8 @@
                         "version": "latest"
                     },
                     "osDisk": {
-                        "createOption": "FromImage"
+                        "createOption": "FromImage",
+                         "diskSizeGB": 60
                     }
                 },
                 "networkProfile": {
@@ -350,9 +351,7 @@
         "fileUris": [
           "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
         ],
-        "commandToExecute": "sh docker.sh",
-        "commandToExecute": "touch et.et",
-        "commandToExecute": "sh docker.sh"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctaine',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', parameters('dnsLabelPrefixIntelliJ'),' > /home/nimbus/DNSIntelli','&& sh docker.sh')]"
       }
     }
     }
