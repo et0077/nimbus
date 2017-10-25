@@ -351,7 +351,7 @@
         "fileUris": [
           "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
         ],
-        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctaine',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', parameters('dnsLabelPrefixIntelliJ'),' > /home/nimbus/DNSIntelli','&& sh docker.sh')]"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctaine',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', parameters('dnsLabelPrefixIntelliJ'),' > /home/nimbus/DNSIntelli',' && echo ', variables('publicIPAddressNameJenkins')).dnsSettings.fqdn,' > /home/nimbus/DNS','&& sh docker.sh')]"
       }
     }
     }
