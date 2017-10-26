@@ -40,7 +40,7 @@ docker cp /home/nimbus/AOSWEBDeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Dep
 docker cp /home/nimbus/AOSWEBRegression.xml devops:/var/lib/jenkins/jobs/AOS_Web_Regression_Test/config.xml
 docker cp /home/nimbus/AOSWEBUndeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Undeploy_Root/config.xml
 docker exec devops adduser nimbus
-PASS='nimbusPassw0rd123'
+PASS=$('nimbusPassw0rd123')
 echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd
 docker stop devops
 docker start devops
