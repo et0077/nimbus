@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <displayName>AOS Web Regression Test</displayName>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <jenkins.model.BuildDiscarderProperty>
+      <strategy class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>6</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+      </strategy>
+    </jenkins.model.BuildDiscarderProperty>
+  </properties>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@3.5.1">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>/GitRepo/AOS_Regression_Test_Web</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>*/master</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder plugin="conditional-buildstep@1.3.6">
+      <runner class="org.jenkins_ci.plugins.run_condition.BuildStepRunner$Fail" plugin="run-condition@1.0"/>
+      <runCondition class="org.jenkins_ci.plugins.run_condition.core.AlwaysRun" plugin="run-condition@1.0"/>
+      <conditionalbuilders>
+        <hudson.tasks.Shell>
+          <command>/usr/bin/mvn install:install-file -Dfile=./leanft-jars/com.hp.lft.sdk-standalone.jar -DgroupId=com.hp.lft -DartifactId=sdk -Dversion=14.1.0 -Dpackaging=jar
+
+            /usr/bin/mvn install:install-file -Dfile=./leanft-jars/com.hp.lft.sdk-javadoc.jar -DgroupId=com.hp.lft -DartifactId=sdk -Dclassifier=javadoc -Dversion=14.1.0 -Dpackaging=jar
+
+            /usr/bin/mvn install:install-file -Dfile=./leanft-jars/com.hp.lft.unittesting.jar -DgroupId=com.hp.lft -DartifactId=unittesting -Dversion=14.1.0 -Dpackaging=jar
+
+            /usr/bin/mvn install:install-file -Dfile=./leanft-jars/com.hp.lft.verifications.jar -DgroupId=com.hp.lft -DartifactId=verifications -Dversion=14.1.0 -Dpackaging=jar
+
+            /usr/bin/mvn install:install-file -Dfile=./leanft-jars/com.hp.lft.report.jar -DgroupId=com.hp.lft -DartifactId=report -Dversion=14.1.0 -Dpackaging=jar
+
+            /usr/bin/mvn install:install-file -Dfile=./leanft-jars/com.hp.lft.reportbuilder-standalone.jar -DgroupId=com.hp.lft -DartifactId=reportbuilder -Dversion=14.1.0 -Dpackaging=jar
+          </command>
+        </hudson.tasks.Shell>
+        <hudson.tasks.Maven>
+          <targets>test -P leanft-test</targets>
+          <mavenName>(Default)</mavenName>
+          <usePrivateRepository>false</usePrivateRepository>
+          <settings class="jenkins.mvn.DefaultSettingsProvider"/>
+          <globalSettings class="jenkins.mvn.DefaultGlobalSettingsProvider"/>
+          <injectBuildVariables>false</injectBuildVariables>
+        </hudson.tasks.Maven>
+      </conditionalbuilders>
+    </org.jenkinsci.plugins.conditionalbuildstep.ConditionalBuilder>
+  </builders>
+  <publishers/>
+  <buildWrappers>
+    <com.michelin.cio.hudson.plugins.copytoslave.CopyToSlaveBuildWrapper plugin="copy-to-slave@1.4.4">
+      <includes>leanft-jars/*</includes>
+      <excludes></excludes>
+      <flatten>false</flatten>
+      <includeAntExcludes>false</includeAntExcludes>
+      <hudsonHomeRelative>false</hudsonHomeRelative>
+      <relativeTo>userContent</relativeTo>
+    </com.michelin.cio.hudson.plugins.copytoslave.CopyToSlaveBuildWrapper>
+  </buildWrappers>
+</project>

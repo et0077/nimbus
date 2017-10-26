@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This project will call out to the Octane container and fetch the Jenkins Client ID stored there. &#xd;
+&#xd;
+This build should be run if you are getting Authorization complaints from Octane, and need to update the key. This will happen frequently as every version of Octane will have a new client ID. It will then update the configuration for Jenkins and restart Jenkins to pick up the new configuration. The build will look like it did not start, and you should refresh the page.</description>
+  <displayName>Update Octane API</displayName>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <assignedNode>master</assignedNode>
+  <canRoam>false</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <org.jenkinsci.plugins.managedscripts.ScriptBuildStep plugin="managed-scripts@1.4">
+      <buildStepId>ea4a741b-e8ee-4970-8057-b375da4da73c</buildStepId>
+      <buildStepArgs>
+        <string>http://octane:8080</string>
+        <string>sa@nga</string>
+        <string>Password1</string>
+      </buildStepArgs>
+      <tokenized>false</tokenized>
+    </org.jenkinsci.plugins.managedscripts.ScriptBuildStep>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>
