@@ -35,8 +35,7 @@ docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpre
 ./launchAOS.sh
 ./launchAOSnew2
 
-
-docker run -d --name devops -v /home/nimbus/jobs:/var/lib/jenkins/jobs -p 2022:22 --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
+docker run -d --name devops -v /home/nimbus/AOSWEBUndeploy.xml:/var/lib/jenkins/jobs/AOS_Web_Undeploy_Root/config.xml -v /home/nimbus/AOSWEBDeploy.xml:/var/lib/jenkins/jobs/AOS_Web_Deploy_Root/config.xml -v /home/nimbus/AOSOctane.xml:/var/lib/jenkins/jobs/octane-update-apikey-util/config.xml -v /home/nimbus/AOSWEBBuildRoot.xml:/var/lib/jenkins/jobs/AOS_Web_Build_Root/config.xml -v /home/nimbus/AOSWEBRegression.xml:/var/lib/jenkins/jobs/AOS_Web_Regression_Test/config.xml -p 2022:22 --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
 docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
 #docker run -d --hostname mc.aos.com --name mc --net demo-net --shm-size=2g admpresales/azure:mc
 #docker run -d --name alm --hostname alm.aos.com --net demo-net --shm-size=2g admpresales/azure:alm
