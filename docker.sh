@@ -7,11 +7,14 @@ apt install lftp --assume-yes
 
 cd /home/nimbus
 
-ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> /root/.ssh/known_hosts
-lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/nimbus/nimbus.tar.gz; bye"
+git clone https://github.com/et0077/nimbus.git
+mv /home/nimbus/nimbus/* /home/nimbus/
 
-tar zxvf /home/nimbus/nimbus.tar.gz
-rm /home/nimbus/nimbus.tar.gz
+#ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> /root/.ssh/known_hosts
+#lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/nimbus/nimbus.tar.gz; bye"
+#tar zxvf /home/nimbus/nimbus.tar.gz
+#rm /home/nimbus/nimbus.tar.gz
+
 cp proxy.conf.MASTER proxy.conf
 
 docker login --username="et007" --password="3Milian)"
