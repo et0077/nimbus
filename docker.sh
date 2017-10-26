@@ -9,9 +9,9 @@ cd /home/nimbus
 
 git clone https://github.com/et0077/nimbus.git
 mv /home/nimbus/nimbus/* /home/nimbus/
-chmod + /home/nimbus/changeProxy.sh
-chmod + /home/nimbus/launchAOS.sh
-chmod + /home/nimbus/launchAOSnew2
+chmod +x /home/nimbus/changeProxy.sh
+chmod +x /home/nimbus/launchAOS.sh
+chmod +x /home/nimbus/launchAOSnew2
 
 cp proxy.conf.MASTER proxy.conf
 
