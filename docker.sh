@@ -9,11 +9,9 @@ cd /home/nimbus
 
 git clone https://github.com/et0077/nimbus.git
 mv /home/nimbus/nimbus/* /home/nimbus/
-
-#ssh-keyscan -H octane.westeurope.cloudapp.azure.com >> /root/.ssh/known_hosts
-#lftp sftp://nimbus:nimbusPassw0rd123@octane.westeurope.cloudapp.azure.com -e "get /home/nimbus/nimbus.tar.gz; bye"
-#tar zxvf /home/nimbus/nimbus.tar.gz
-#rm /home/nimbus/nimbus.tar.gz
+chmod + /home/nimbus/changeProxy.sh
+chmod + /home/nimbus/launchAOS.sh
+chmod + /home/nimbus/launchAOSnew2
 
 cp proxy.conf.MASTER proxy.conf
 
