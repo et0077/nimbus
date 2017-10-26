@@ -42,7 +42,7 @@ docker cp /home/nimbus/AOSWEBRegression.xml devops:/var/lib/jenkins/jobs/AOS_Web
 docker cp /home/nimbus/AOSWEBUndeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Undeploy_Root/config.xml
 docker exec devops adduser nimbus
 PASS='nimbusPassw0rd123'
-echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd
+echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd nimbus
 docker stop devops
 docker start devops
 #docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
