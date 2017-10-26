@@ -35,6 +35,7 @@ docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpre
 
 docker run -d --name devops -p 2022:22 --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
 docker cp /home/nimbus/AOSWEBBuildRoot.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_Root/config.xml
+docker cp /home/nimbus/AOSWEBBuildAll.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_All/config.xml
 docker cp /home/nimbus/AOSOctane.xml devops:/var/lib/jenkins/jobs/octane-update-apikey-util/config.xml
 docker cp /home/nimbus/AOSWEBDeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Deploy_Root/config.xml
 docker cp /home/nimbus/AOSWEBRegression.xml devops:/var/lib/jenkins/jobs/AOS_Web_Regression_Test/config.xml
