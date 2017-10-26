@@ -14,4 +14,3 @@ cat /home/nimbus/AOSWEBDeploy.xml | sed  "s/westeurope/$DNS/g" > /home/nimbus/AO
 cp /home/nimbus/AOSWEBDeployNew.xml /home/nimbus/AOSWEBDeploy.xml
 cat /home/nimbus/AOSOctane.xml | sed  "s/octane:8080/$Octane.$DNS.cloudapp.azure.com/g" > /home/nimbus/AOSOctaneNew.xml
 cp /home/nimbus/AOSOctaneNew.xml /home/nimbus/AOSOctane.xml
-cat /home/nimbus/AOSWEBBuildRoot.xml | sed  "s/etmaster/1.1.2/g"  > /home/nimbus/AOSWEBBuildRootnew.xml
