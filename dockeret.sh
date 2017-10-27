@@ -49,5 +49,6 @@ docker start devops
 #docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
 #docker run -d --hostname mc.aos.com --name mc --net demo-net --shm-size=2g admpresales/azure:mc
 #docker run -d --name alm --hostname alm.aos.com --net demo-net --shm-size=2g admpresales/azure:alm
-#docker run -d --hostname autopass.aos.com --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
+docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
+docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net  functionaltesting/leanft-chrome:14.01
 docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf admpresales/azure:nginx
