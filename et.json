@@ -349,7 +349,7 @@
         "autoUpgradeMinorVersion": true,
       "settings": {
         "fileUris": [
-          "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
+          "https://raw.githubusercontent.com/et0077/nimbus/master/dockeret.sh"
         ],
         "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', parameters('dnsLabelPrefixIntelliJ'),' > /home/nimbus/DNSIntelli',' && echo ', resourceGroup().location,' > /home/nimbus/DNS','&& sh dockeret.sh')]"
       }
