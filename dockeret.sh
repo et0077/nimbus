@@ -13,7 +13,7 @@ chmod +x /home/nimbus/changeProxy.sh
 chmod +x /home/nimbus/launchAOS.sh
 chmod +x /home/nimbus/launchAOSnew2
 
-cp proxy.conf.MASTER proxy.conf
+cp proxyet.conf proxy.conf
 
 docker login --username="et007" --password="3Milian)"
 
