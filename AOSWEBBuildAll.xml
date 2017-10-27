@@ -80,7 +80,7 @@
   </publishers>
   <buildWrappers/>
   <prebuilders>
-    <org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep plugin="config-file-provider@2.16.4">
+    <org.jenkinsci.plugins.configfiles.builder.ConfigFileBuildStep plugin="config-file-provider@2.16.3">
       <managedFiles>
         <org.jenkinsci.plugins.configfiles.buildwrapper.ManagedFile>
           <fileId>c9d374ee-1f22-464a-9779-04c68c5475a0</fileId>
@@ -97,3 +97,4 @@
     <color>YELLOW</color>
     <completeBuild>true</completeBuild>
   </runPostStepsIfResult>
+</maven2-moduleset>
