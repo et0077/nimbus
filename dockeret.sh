@@ -2,7 +2,6 @@
 sudo su -
 apt install docker.io --assume-yes
 apt install docker-compose --assume-yes
-apt install lftp --assume-yes
 /etc/init.d/docker start
 
 cd /home/nimbus
