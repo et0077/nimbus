@@ -35,8 +35,9 @@ docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpre
 
 docker run -d --name devops -p 2022:22 --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
 docker exec devops adduser nimbus
-PASS='nimbusPassw0rd123'
-echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd nimbus
+$PASS='nimbusPassw0rd123'
+echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd
+docker exec devops chown -R nimbus:nimbus /GitRepo
 docker stop devops
 docker cp /home/nimbus/AOSWEBBuildRoot.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_Root/config.xml
 docker cp /home/nimbus/AOSWEBBuildAll.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_All/config.xml
