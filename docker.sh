@@ -34,6 +34,9 @@ docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net admpre
 ./launchAOSnew2
 
 docker run -d --name devops -p 2022:22 --hostname devops.aos.com --net demo-net admpresales/devops:1.1.2.0
+docker exec devops adduser nimbus
+PASS='nimbusPassw0rd123'
+echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd nimbus
 docker stop devops
 docker cp /home/nimbus/AOSWEBBuildRoot.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_Root/config.xml
 docker cp /home/nimbus/AOSWEBBuildAll.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_All/config.xml
@@ -41,9 +44,6 @@ docker cp /home/nimbus/AOSOctane.xml devops:/var/lib/jenkins/jobs/octane-update-
 docker cp /home/nimbus/AOSWEBDeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Deploy_Root/config.xml
 docker cp /home/nimbus/AOSWEBRegression.xml devops:/var/lib/jenkins/jobs/AOS_Web_Regression_Test/config.xml
 docker cp /home/nimbus/AOSWEBUndeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Undeploy_Root/config.xml
-docker exec devops adduser nimbus
-PASS='nimbusPassw0rd123'
-echo -e "$PASS\n$PASS" | sudo docker exec -u nimbus -i devops passwd nimbus
 docker start devops
 #docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
 #docker run -d --hostname mc.aos.com --name mc --net demo-net --shm-size=2g admpresales/azure:mc
