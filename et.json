@@ -6,10 +6,10 @@
                 "type": "string",
                 "defaultValue": "DevOps Octane Application",
                 "allowedValues": [
-                    "DevOps Octane Application",
-                    "DevOps Octane Application MC",
-                    "DevOps Octane Application MC ALM",
-                    "DevOps Application Only"
+                    "DevOps Octane Application about 30 min",
+                    "DevOps Octane Application MC about 40 min",
+                    "DevOps Octane Application MC ALM about 1 hr",
+                    "DevOps Application Only about 10 min"
                 ],
                 "metadata": {
                 "Description": "Select the services that you want to start"
