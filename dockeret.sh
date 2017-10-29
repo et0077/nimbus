@@ -52,7 +52,7 @@ then
   docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net --restart=always functionaltesting/leanft-chrome:14.01
   docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf --restart=always admpresales/azure:nginx
 else
-docker run -d --hostname octane.aos.com --name octane --ip=172.50.10.6 --net demo-net --shm-size=2g --restart=always admpresales/azure:octane
+docker run -d --name octane --hostname octane.aos.com --net demo-net --shm-size=2g --ip=172.50.10.6 --restart=always admpresales/octane:12.55.7.74_dis
 docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
 docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net --restart=always functionaltesting/leanft-chrome:14.01
 docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf --restart=always admpresales/azure:nginx
