@@ -60,7 +60,6 @@ docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_I
 docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf --restart=always admpresales/azure:nginx
 if grep -q ALM /home/nimbus/SIZE
 then
-  docker run -d --hostname mc.aos.com --name mc --ip=172.50.10.9 --net demo-net --shm-size=2g --restart=always admpresales/mc:2.51_di
   docker run -d --name alm --hostname alm.aos.com --ip=172.50.10.11 --net demo-net --shm-size=2g --restart=always admpresales/alm:12.55_di
 else
   if grep -q MC /home/nimbus/SIZE
