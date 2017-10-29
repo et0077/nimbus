@@ -17,37 +17,37 @@
         "dnsLabelPrefixJenkins": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your jenkins alias devops"
+                "description": "Insert unique DNS name for your Jenkins alias devops"
             }
         },
         "dnsLabelPrefixOctane": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your octane"
+                "description": "Insert unique DNS name for your Octane"
             }
         },
         "dnsLabelPrefixAOSAccount": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your AOS Account service"
+                "description": "Insert unique DNS name for your AOS Account service"
             }
         },
         "dnsLabelPrefixAOS": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your AOS application"
+                "description": "Insert unique DNS name for your AOS application"
             }
         },
         "dnsLabelPrefixMC": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your MobileCenter"
+                "description": "Insert unique DNS name for your MobileCenter"
             }
         },
         "dnsLabelPrefixALM": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your ALM"
+                "description": "Insert unique DNS name for your ALM"
             }
         },
         "dnsLabelPrefixIntelliJ": {
