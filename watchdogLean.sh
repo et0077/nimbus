@@ -5,14 +5,9 @@ do
         Number=$(docker ps |wc -l)
         if [ $Number -ne $NumberImages ] ;
         then
-                echo "different"
-                echo $Number
-                echo "file " $NumberImages
+                docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net  functionaltesting/leanft-chrome:14.01
                 sleep 5
         else
-                echo "OK"
                 sleep 5
-                echo $Number
-                echo "file " $NumberImages
         fi
 done
