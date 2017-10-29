@@ -1,16 +1,17 @@
-upstream jenkins { server 172.18.0.5:8080; }
+upstream jenkins { server 172.50.10.5:8080; }
 
-upstream octane { server 172.18.0.6:8080; }
+upstream octane { server 172.50.10.6:8080; }
 
 
-upstream aos { server 172.18.0.4:8080; }
-upstream aosacc { server 172.18.0.3:8080; }
+upstream aos { server 172.50.10.4:8080; }
+upstream aosacc { server 172.50.10.3:8080; }
 
-upstream mc { server 172.18.0.7:8080; }
+upstream mc { server 172.50.10.9:8080; }
 
-upstream sitescope { server 172.18.0.8:8080; }
+upstream sitescope { server 172.50.10.8:8080; }
 
-upstream alm { server 172.18.0.8:8080; }
+upstream alm { server 172.50.10.11:8080; }
+
 
 server {
 listen 80;
