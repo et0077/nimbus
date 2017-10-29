@@ -15,7 +15,7 @@ chmod +x /home/nimbus/calcimage.sh
 chmod +x /home/nimbus/watchdogLean.sh
 rm -r /home/nimbus/nimbus/
 
-cp proxyet.conf proxy.conf
+cp proxy.conf.MASTER proxy.conf
 
 docker login --username="et007" --password="3Milian)"
 
