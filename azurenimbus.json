@@ -8,7 +8,7 @@
                 "allowedValues": [
                     "DevOps Octane Application about 30 min",
                     "DevOps Octane Application MC about 40 min",
-                    "DevOps Octane Application MC ALM about 1 hr",
+                    "DevOps Octane Application ALM about 40 min",
                     "DevOps Application Only about 10 min"
                 ],
                 "metadata": {
