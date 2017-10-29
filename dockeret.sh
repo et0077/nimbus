@@ -11,6 +11,7 @@ mv /home/nimbus/nimbus/* /home/nimbus/
 chmod +x /home/nimbus/changeProxy.sh
 chmod +x /home/nimbus/launchAOS.sh
 chmod +x /home/nimbus/launchAOSnew2
+rm -r /home/nimbus/nimbus/
 
 cp proxyet.conf proxy.conf
 
