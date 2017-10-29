@@ -2,6 +2,18 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentna.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "DockerSize": {
+                "type": "string",
+                "defaultValue": "DevOps Octane Application",
+                "allowedValues": [
+                    "DevOps Octane Application",
+                    "DevOps Octane Application MC",
+                    "DevOps Octane Application MC ALM"
+                ],
+                "metadata": {
+                "Description": "Select the services that you want to start"
+            }
+        },
         "dnsLabelPrefixJenkins": {
             "type": "string",
             "metadata": {
