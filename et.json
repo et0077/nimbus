@@ -26,16 +26,16 @@
                 "description": "Insert unique DNS name for your Octane"
             }
         },
-        "dnsLabelPrefixAOSAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "Insert unique DNS name for your AOS Account service"
-            }
-        },
         "dnsLabelPrefixAOS": {
             "type": "string",
             "metadata": {
                 "description": "Insert unique DNS name for your AOS application"
+            }
+        },
+        "dnsLabelPrefixAOSAccount": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your AOS Account service"
             }
         },
         "dnsLabelPrefixMC": {
@@ -49,12 +49,6 @@
             "metadata": {
                 "description": "Insert unique DNS name for your ALM"
             }
-        },
-        "dnsLabelPrefixIntelliJ": {
-            "type": "string",
-            "metadata": {
-                "description": "DNS for PublicIPAddressName for your IntelliJ"
-            }
         }
     },
     "variables": {
@@ -67,7 +61,6 @@
         "publicIPAddressType4": "Static",
         "publicIPAddressType5": "Static",
         "publicIPAddressType6": "Static",
-        "publicIPAddressType7": "Static",
         "nicName": "myNic1",
         "vnetName": "myVNet1",
         "publicIPAddressNameJenkins": "myPublicIPJenkins",
@@ -76,7 +69,6 @@
         "publicIPAddressName4AOS": "myPublicIP4AOS",
         "publicIPAddressName5MC": "myPublicIP5MC",
         "publicIPAddressName6ALM": "myPublicIP6ALM",
-        "publicIPAddressName7IntelliJ": "myPublicIP7IntelliJ",
         "vmName": "nimbus",
         "vmID": "nimbus",
         "vmPSW": "nimbusPassw0rd123",
@@ -158,18 +150,6 @@
             }
         },
         {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[variables('publicIPAddressName7IntelliJ')]",
-            "apiVersion": "2016-03-30",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "publicIPAllocationMethod": "[variables('publicIPAddressType7')]",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('dnsLabelPrefixIntelliJ')]"
-                }
-            }
-        },
-        {
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[variables('vnetName')]",
             "apiVersion": "2016-03-30",
@@ -205,8 +185,7 @@
                 "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName3AOSAccount'))]",
                 "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName4AOS'))]",
                 "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName5MC'))]",
-                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]",
-                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName7IntelliJ'))]"
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -283,19 +262,6 @@
                             "privateIPAllocationMethod": "Static",
                             "publicIPAddress": {
                                 "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    },
-                    {
-                        "name": "IPConfig-7",
-                        "properties": {
-                            "privateIPAddress": "10.0.0.10",
-                            "privateIPAllocationMethod": "Static",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName7IntelliJ'))]"
                             },
                             "subnet": {
                                 "id": "[variables('subnetRef')]"
