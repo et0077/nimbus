@@ -59,7 +59,7 @@ docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/e
 if grep -q ALM /home/nimbus/SIZE
 then
   docker run -d --hostname mc.aos.com --name mc --ip=172.50.10.9 --net demo-net --shm-size=2g --restart=always admpresales/azure:mc
-  docker run -d --name alm --hostname alm.aos.com --ip=172.50.10.11 --net demo-net --shm-size=2g --restart=always admpresales/azure:alm
+  docker run -d --name alm --hostname alm.aos.com --ip=172.50.10.11 --net demo-net --shm-size=2g --restart=always admpresales/alm:12.55_di
 else
   if grep -q MC /home/nimbus/SIZE
     then
