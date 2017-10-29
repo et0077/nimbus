@@ -329,15 +329,30 @@
         "fileUris": [
           "https://raw.githubusercontent.com/et0077/nimbus/master/dockeret.sh"
         ],
-        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', parameters('dnsLabelPrefixIntelliJ'),' > /home/nimbus/DNSIntelli',' && echo ', resourceGroup().location,' > /home/nimbus/DNS','&& sh dockeret.sh')]"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE')]"
       }
     }
     }
     ],
     "outputs": {
-        "hostname": {
+        "Copy into the browser for Devops": {
             "type": "string",
             "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
+        },
+        "Copy into the browser for Octane": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName2Octane')).dnsSettings.fqdn]"
+        },        "Copy into the browser for AOS Application": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName4AOS')).dnsSettings.fqdn]"
+        },
+                "Copy into the browser for MobileCenter": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName5MC')).dnsSettings.fqdn]"
+        },
+                "Copy into the browser for ALM": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName6ALM')).dnsSettings.fqdn]"
         }
     }
 }
