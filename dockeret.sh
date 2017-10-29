@@ -48,6 +48,8 @@ docker cp /home/nimbus/AOSWEBUndeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_U
 docker start devops
 if grep -q Only /home/nimbus/SIZE
 then
+  docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
+  docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net  functionaltesting/leanft-chrome:14.01
   docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf admpresales/azure:nginx
 else
 docker run -d --hostname octane.aos.com --name octane --net demo-net --shm-size=2g admpresales/azure:octane
