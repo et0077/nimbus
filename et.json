@@ -8,7 +8,8 @@
                 "allowedValues": [
                     "DevOps Octane Application",
                     "DevOps Octane Application MC",
-                    "DevOps Octane Application MC ALM"
+                    "DevOps Octane Application MC ALM",
+                    "DevOps Application Only"
                 ],
                 "metadata": {
                 "Description": "Select the services that you want to start"
