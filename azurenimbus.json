@@ -2,46 +2,53 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentna.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "DockerSize": {
+                "type": "string",
+                "defaultValue": "DevOps Octane Application",
+                "allowedValues": [
+                    "DevOps Octane Application about 30 min",
+                    "DevOps Octane Application MC about 40 min",
+                    "DevOps Octane Application MC ALM about 1 hr",
+                    "DevOps Application Only about 10 min"
+                ],
+                "metadata": {
+                "Description": "Select the services that you want to start"
+            }
+        },
         "dnsLabelPrefixJenkins": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your jenkins alias devops"
+                "description": "Insert unique DNS name for your Jenkins alias devops"
             }
         },
         "dnsLabelPrefixOctane": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your octane"
-            }
-        },
-        "dnsLabelPrefixAOSAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "DNS for PublicIPAddressName for your AOS Account service"
+                "description": "Insert unique DNS name for your Octane"
             }
         },
         "dnsLabelPrefixAOS": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your AOS application"
+                "description": "Insert unique DNS name for your AOS application"
+            }
+        },
+        "dnsLabelPrefixAOSAccount": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your AOS Account service"
             }
         },
         "dnsLabelPrefixMC": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your MobileCenter"
+                "description": "Insert unique DNS name for your MobileCenter"
             }
         },
         "dnsLabelPrefixALM": {
             "type": "string",
             "metadata": {
-                "description": "DNS for PublicIPAddressName for your ALM"
-            }
-        },
-        "dnsLabelPrefixIntelliJ": {
-            "type": "string",
-            "metadata": {
-                "description": "DNS for PublicIPAddressName for your IntelliJ"
+                "description": "Insert unique DNS name for your ALM"
             }
         }
     },
@@ -55,7 +62,6 @@
         "publicIPAddressType4": "Static",
         "publicIPAddressType5": "Static",
         "publicIPAddressType6": "Static",
-        "publicIPAddressType7": "Static",
         "nicName": "myNic1",
         "vnetName": "myVNet1",
         "publicIPAddressNameJenkins": "myPublicIPJenkins",
@@ -64,7 +70,6 @@
         "publicIPAddressName4AOS": "myPublicIP4AOS",
         "publicIPAddressName5MC": "myPublicIP5MC",
         "publicIPAddressName6ALM": "myPublicIP6ALM",
-        "publicIPAddressName7IntelliJ": "myPublicIP7IntelliJ",
         "vmName": "nimbus",
         "vmID": "nimbus",
         "vmPSW": "nimbusPassw0rd123",
@@ -146,18 +151,6 @@
             }
         },
         {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "[variables('publicIPAddressName7IntelliJ')]",
-            "apiVersion": "2016-03-30",
-            "location": "[resourceGroup().location]",
-            "properties": {
-                "publicIPAllocationMethod": "[variables('publicIPAddressType7')]",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('dnsLabelPrefixIntelliJ')]"
-                }
-            }
-        },
-        {
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[variables('vnetName')]",
             "apiVersion": "2016-03-30",
@@ -193,8 +186,7 @@
                 "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName3AOSAccount'))]",
                 "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName4AOS'))]",
                 "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName5MC'))]",
-                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]",
-                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName7IntelliJ'))]"
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]"
             ],
             "properties": {
                 "ipConfigurations": [
@@ -276,19 +268,6 @@
                                 "id": "[variables('subnetRef')]"
                             }
                         }
-                    },
-                    {
-                        "name": "IPConfig-7",
-                        "properties": {
-                            "privateIPAddress": "10.0.0.10",
-                            "privateIPAllocationMethod": "Static",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName7IntelliJ'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
                     }
                 ]
             }
@@ -349,17 +328,32 @@
         "autoUpgradeMinorVersion": true,
       "settings": {
         "fileUris": [
-          "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
+          "https://raw.githubusercontent.com/et0077/nimbus/master/dockeret.sh"
         ],
-        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', parameters('dnsLabelPrefixIntelliJ'),' > /home/nimbus/DNSIntelli',' && echo ', resourceGroup().location,' > /home/nimbus/DNS','&& sh docker.sh')]"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && sh docker.sh')]"
       }
     }
     }
     ],
     "outputs": {
-        "hostname": {
+        "Copy into the browser for Devops": {
             "type": "string",
             "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
+        },
+        "Copy into the browser for Octane": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName2Octane')).dnsSettings.fqdn]"
+        },        "Copy into the browser for AOS Application": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName4AOS')).dnsSettings.fqdn]"
+        },
+                "Copy into the browser for MobileCenter": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName5MC')).dnsSettings.fqdn]"
+        },
+                "Copy into the browser for ALM": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName6ALM')).dnsSettings.fqdn]"
         }
     }
 }
