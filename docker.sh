@@ -45,6 +45,7 @@ docker cp /home/nimbus/AOSOctane.xml devops:/var/lib/jenkins/jobs/octane-update-
 docker cp /home/nimbus/AOSWEBDeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Deploy_Root/config.xml
 docker cp /home/nimbus/AOSWEBRegression.xml devops:/var/lib/jenkins/jobs/AOS_Web_Regression_Test/config.xml
 docker cp /home/nimbus/AOSWEBUndeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Undeploy_Root/config.xml
+docker cp /home/nimbus/com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder.xml devops:/var/lib/jenkins/com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder.xml
 docker start devops
 if grep -q Only /home/nimbus/SIZE
 then
