@@ -15,7 +15,7 @@ cat /home/nimbus/AOSWEBDeploy.xml | sed  "s/westeurope/$DNS/g" > /home/nimbus/AO
 cp /home/nimbus/AOSWEBDeployNew.xml /home/nimbus/AOSWEBDeploy.xml
 cat /home/nimbus/AOSOctane.xml | sed  "s/octane:8080/$Octane.$DNS.cloudapp.azure.com/g" > /home/nimbus/AOSOctaneNew.xml
 cp /home/nimbus/AOSOctaneNew.xml /home/nimbus/AOSOctane.xml
-cat /home/nimbus/jenkins.model.JenkinsLocationConfiguration.xml | sed  "s/nimbusserver:8090/$Jenkins.$DNS.cloudapp.azure.com/g" > /home/nimbus/jenkconf.xml
-cp /home/nimbus/jenkconf.xml /home/nimbus/jenkins.model.JenkinsLocationConfiguration.xml
-cat /home/nimbus/com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder.xml | sed  "s/octane:8080/$Octane.$DNS.cloudapp.azure.com/g" > /home/nimbus/pluginctaneNew.xml
-cp /home/nimbus/pluginctaneNew.xml /home/nimbus/com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder.xml
+cat /home/nimbus/JenkConfig.xml | sed  "s/nimbusserver:8090/$Jenkins.$DNS.cloudapp.azure.com/g" > /home/nimbus/JenkConfigNew.xml
+cp /home/nimbus/JenkConfigNew.xml /home/nimbus/JenkConfig.xml
+cat /home/nimbus/OctanePluging.xml | sed  "s/octane:8080/$Octane.$DNS.cloudapp.azure.com/g" > /home/nimbus/OctanePlugingNew.xml
+cp /home/nimbus/OctanePlugingNew.xml /home/nimbus/OctanePluging.xml
