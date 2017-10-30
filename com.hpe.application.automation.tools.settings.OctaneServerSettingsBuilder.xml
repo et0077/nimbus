@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder_-OctaneDescriptorImpl plugin="hp-application-automation-tools-plugin@5.2">
+  <servers>
+    <com.hpe.application.automation.tools.model.OctaneServerSettingsModel>
+      <identity>317b758b-8160-4421-8e2f-026683aca9f6</identity>
+      <identityFrom>1490296234416</identityFrom>
+      <uiLocation>http://octane:8080/ui/?p=1001/1002</uiLocation>
+      <username>jenkins_dl960md682l85hxvqlg5l05mk</username>
+      <password>{AQAAABAAAAAgnZj8pUrYPqVFwb/XdZHjK70ZxHimAIoJLjXi5rcU5K50ewF1h4lehkgtLPuw4H9W}</password>
+      <impersonatedUser></impersonatedUser>
+      <location>http://octane:8080</location>
+      <sharedSpace>1001</sharedSpace>
+    </com.hpe.application.automation.tools.model.OctaneServerSettingsModel>
+  </servers>
+</com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder_-OctaneDescriptorImpl>
