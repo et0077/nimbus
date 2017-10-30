@@ -11,7 +11,6 @@ mv /home/nimbus/nimbus/* /home/nimbus/
 chmod +x /home/nimbus/changeProxy.sh
 chmod +x /home/nimbus/launchAOS.sh
 chmod +x /home/nimbus/launchAOSnew2
-chmod +x /home/nimbus/calcimage.sh
 chmod +x /home/nimbus/watchdogLean.sh
 rm -r /home/nimbus/nimbus/
 
