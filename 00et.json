@@ -353,7 +353,7 @@
         },
                 "Copy into the browser for ALM": {
             "type": "string",
-            "value": "[reference(variables('publicIPAddressName6ALM')).dnsSettings.fqdn]"
+            "value": "[concat(reference(variables('publicIPAddressName6ALM')).dnsSettings.fqdn,'/qcbin/')]"
         }
     }
 }
