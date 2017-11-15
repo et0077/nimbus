@@ -1,0 +1,19 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Source interfaces
+# Please check /etc/network/interfaces.d before changing this file
+# as interfaces may have been defined in /etc/network/interfaces.d
+# See LP: #1262951
+source /etc/network/interfaces.d/*.cfg
+
+# Read the dynamically created configurations from tmpfs mount. If you want a static
+# configuration, disable the line below. However, you will have to manually configure
+# each interface on this system. The contents of /etc/network/interfaces.dynamic.d/*.cfg
+# are written over EACH boot.
+source /etc/network/interfaces.dynamic.d/*.cfg
+
