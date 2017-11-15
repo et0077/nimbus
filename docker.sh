@@ -15,6 +15,7 @@ chmod +x /home/nimbus/watchdogLean.sh
 rm -r /home/nimbus/nimbus/
 
 cp proxy.conf.MASTER proxy.conf
+cp interfaces /etc/network/interfaces
 
 docker login --username="et007" --password="3Milian)"
 
