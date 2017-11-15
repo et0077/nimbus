@@ -47,6 +47,15 @@ docker cp /home/nimbus/AOSWEBRegression.xml devops:/var/lib/jenkins/jobs/AOS_Web
 docker cp /home/nimbus/AOSWEBUndeploy.xml devops:/var/lib/jenkins/jobs/AOS_Web_Undeploy_Root/config.xml
 docker cp /home/nimbus/OctanePluging.xml devops:/var/lib/jenkins/com.hpe.application.automation.tools.settings.OctaneServerSettingsBuilder.xml
 docker start devops
+docker exec devops git clone ssh://localhost/GitRepo/AOS_Regression_Test_Web
+docker cp /home/nimbus/pom.xml devops:/AOS_Regression_Test_Web/pom.xml
+docker cp /home/nimbus/leanft.properties devops:/AOS_Regression_Test_Web/src/main/resources/leanft.properties
+docker cp /home/nimbus/LeanFtTest.java devops:/AOS_Regression_Test_Web/src/main/java/LeanFtTest.java
+docker exec devops sh -c "cd /AOS_Regression_Test_Web/ && git add pom.xml"
+docker exec devops sh -c "cd /AOS_Regression_Test_Web/src/main/resources/ && git add leanft.properties"
+docker exec devops sh -c "cd /AOS_Regression_Test_Web/src/main/java/ && git add LeanFtTest.java"
+docker exec devops sh -c "cd /AOS_Regression_Test_Web/ && git commit -m "ET""
+docker exec devops sh -c "cd /AOS_Regression_Test_Web/ && git push origin master"
 if grep -q Only /home/nimbus/SIZE
 then
   docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
