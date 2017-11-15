@@ -17,3 +17,39 @@ source /etc/network/interfaces.d/*.cfg
 # are written over EACH boot.
 source /etc/network/interfaces.dynamic.d/*.cfg
 
+auto eth0:1
+iface eth0:1 inet static
+address 10.0.0.5
+netmask 255.255.255.0
+broadcast 10.0.0.255
+network 10.0.0.0
+auto eth0:2
+iface eth0:2 inet static
+address 10.0.0.6
+netmask 255.255.255.0
+broadcast 10.0.0.255
+network 10.0.0.0
+auto eth0:3
+iface eth0:3 inet static
+address 10.0.0.7
+netmask 255.255.255.0
+broadcast 10.0.0.255
+network 10.0.0.0
+auto eth0:4
+iface eth0:4 inet static
+address 10.0.0.8
+netmask 255.255.255.0
+broadcast 10.0.0.255
+network 10.0.0.0
+auto eth0:5
+iface eth0:5 inet static
+address 10.0.0.9
+netmask 255.255.255.0
+broadcast 10.0.0.255
+network 10.0.0.0
+auto eth0:6
+iface eth0:6 inet static
+address 10.0.0.10
+netmask 255.255.255.0
+broadcast 10.0.0.255
+network 10.0.0.0
