@@ -19,3 +19,5 @@ cat /home/nimbus/JenkConfig.xml | sed  "s/nimbusserver:8090/$Jenkins.$DNS.clouda
 cp /home/nimbus/JenkConfigNew.xml /home/nimbus/JenkConfig.xml
 cat /home/nimbus/OctanePluging.xml | sed  "s/octane:8080/$Octane.$DNS.cloudapp.azure.com/g" > /home/nimbus/OctanePlugingNew.xml
 cp /home/nimbus/OctanePlugingNew.xml /home/nimbus/OctanePluging.xml
+cat /home/nimbus/LeanFtTest.java | sed  "s/aos_main:8080/$AOS.$DNS.cloudapp.azure.com/g" > /home/nimbus/LeanFtTest.javaNew
+cp /home/nimbus/LeanFtTest.javaNew /home/nimbus/LeanFtTest.java
