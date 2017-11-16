@@ -1,0 +1,5 @@
+<application>
+  <component name="ColumnValue" Columns_LastDefect="{id=60, detected_in_release=150, name=120, release=150, priority=150, detected_by=150, owner=150, severity=150, last_modified=150, description=250}" Columns_LastTest="{id=60, name=120, testing_tool_type=150, test_type=150, product_areas=200}" />
+  <component name="ConfigValue" User_Name="sa@nga" Server_URL="http://etoct.westeurope.cloudapp.azure.com/ui/?p=1001/1002" WorkspaceName="default_shared_space\default_workspace" Password_Key="19c7c73d-9453-42a9-8155-dc96351055b9" />
+  <component name="FilterValue" FilterFieldsDefect="" FilterFieldsTest="" />
+</application>
