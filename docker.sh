@@ -12,6 +12,7 @@ chmod +x /home/nimbus/changeProxy.sh
 chmod +x /home/nimbus/launchAOS.sh
 chmod +x /home/nimbus/launchAOSnew2
 chmod +x /home/nimbus/watchdogLean.sh
+chmod +x /home/nimbus/killWD.sh
 rm -r /home/nimbus/nimbus/
 
 cp proxy.conf.MASTER proxy.conf
