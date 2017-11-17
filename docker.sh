@@ -32,6 +32,7 @@ ifconfig eth0:7 inet 10.0.0.10
 ./changeProxy.sh
 
 docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net --restart=always admpresales/aos-postgres:1.1.2
+docker run -d --name ide -p 5901:5900 --net demo-net -e VNC_PASSWORD=nimbusPassw0rd123 admpresales/azure:ide
 
 ./launchAOS.sh
 ./launchAOSnew2
@@ -40,7 +41,6 @@ docker run -d --name devops -p 2022:22 --hostname devops.aos.com --ip=172.50.10.
 docker exec devops useradd -m -p $(echo "nimbusPassw0rd123" | openssl passwd -1 -stdin) nimbus
 docker exec devops chown -R nimbus:nimbus /GitRepo
 docker stop devops
-docker run -d --name ide -p 5901:5900 --net demo-net -e VNC_PASSWORD=nimbusPassw0rd123 admpresales/azure:ide
 docker cp /home/nimbus/JenkConfig.xml devops:/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml
 docker cp /home/nimbus/AOSWEBBuildRoot.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_Root/config.xml
 docker cp /home/nimbus/AOSWEBBuildAll.xml devops:/var/lib/jenkins/jobs/AOS_Web_Build_All/config.xml
