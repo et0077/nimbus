@@ -32,7 +32,7 @@ ifconfig eth0:7 inet 10.0.0.10
 ./changeProxy.sh
 
 docker run -d --name aos_postgres --hostname aosdb.aos.com --net demo-net --restart=always admpresales/aos-postgres:1.1.2
-docker run -d --name ide -p 5901:5900 --net demo-net -e VNC_PASSWORD=nimbusPassw0rd123 admpresales/azure:ide
+docker run -d --name ide -p 5901:5900 --net demo-net -e VNC_PASSWORD=PASSWORD admpresales/azure:ide
 
 ./launchAOS.sh
 ./launchAOSnew2
