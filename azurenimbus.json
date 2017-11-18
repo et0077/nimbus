@@ -336,6 +336,14 @@
     }
     ],
     "outputs": {
+        "Copy into the VNC Viewer for LeanFT": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
+        },
+         "Copy into the VNC Viewer for Intellij": {
+            "type": "string",
+            "value": "[concat(reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn,':5901')]"
+        },
         "Copy into the browser for Devops": {
             "type": "string",
             "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
