@@ -340,7 +340,7 @@
             "type": "string",
             "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
         },
-         "Copy into the VNC Viewer for Intellij - psw:vncpassword": {
+         "Copy into the VNC Viewer for Intellij - psw lowercase:vncpassword": {
             "type": "string",
             "value": "[concat(reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn,':5901')]"
         },
