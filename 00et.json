@@ -340,9 +340,9 @@
         "autoUpgradeMinorVersion": true,
       "settings": {
         "fileUris": [
-          "https://raw.githubusercontent.com/et0077/nimbus/master/LaunchDocker.sh"
+          "https://raw.githubusercontent.com/et0077/nimbus/master/00docker.sh"
         ],
-        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && echo ', parameters('dockerLogin'),' > /home/nimbus/dockerLogin',' && echo ', parameters('dockerPSW'),' > /home/nimbus/dockerPSW',' && sh LaunchDocker.sh')]"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && echo ', parameters('dockerLogin'),' > /home/nimbus/dockerLogin',' && echo ', parameters('dockerPSW'),' > /home/nimbus/dockerPSW',' && sh 00docker.sh')]"
       }
     }
     }
