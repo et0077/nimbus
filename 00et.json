@@ -6,10 +6,10 @@
                 "type": "string",
                 "defaultValue": "DevOps Octane Application",
                 "allowedValues": [
-                    "DevOps Octane Application about 30 min",
-                    "DevOps Octane Application MC about 40 min",
-                    "DevOps Octane Application MC ALM about 1 hr",
-                    "DevOps Application Only about 10 min"
+                    "DevOps Octane Application about : 35 min",
+                    "DevOps Octane Application ALM about : 40 min",
+                    "DevOps Octane Application MC about : 40 min",
+                    "DevOps Application Only about : 30 min"
                 ],
                 "metadata": {
                 "Description": "Select the services that you want to start"
@@ -73,7 +73,7 @@
         "vmName": "nimbus",
         "vmID": "nimbus",
         "vmPSW": "nimbusPassw0rd123",
-        "vmSize": "Standard_DS11_v2",
+        "vmSize": "Standard_E2_v3",
         "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
         "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
     },
@@ -328,19 +328,19 @@
         "autoUpgradeMinorVersion": true,
       "settings": {
         "fileUris": [
-          "https://raw.githubusercontent.com/et0077/nimbus/master/00docker.sh"
+          "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
         ],
-        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && sh 00docker.sh')]"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && sh docker.sh')]"
       }
     }
     }
     ],
     "outputs": {
-         "Copy into the VNC Viewer for LeanFT": {
+        "Copy into the VNC Viewer for LeanFT - psw:PASSWORD": {
             "type": "string",
             "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
         },
-         "Copy into the VNC Viewer for Intellij": {
+         "Copy into the VNC Viewer for Intellij - psw lowercase:vncpassword": {
             "type": "string",
             "value": "[concat(reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn,':5901')]"
         },
