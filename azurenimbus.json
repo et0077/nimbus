@@ -21,7 +21,7 @@
                 "description": "Insert your docker id"
             }
         },
-        "dockerPSW": {
+        "dockerPsw": {
             "type": "string",
             "metadata": {
                 "description": "Insert your docker password"
@@ -342,7 +342,7 @@
         "fileUris": [
           "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
         ],
-        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && echo ',' && echo ', parameters('dockerPSW'),' > /home/nimbus/dockerPSW',' && echo ', parameters('dockerLogin'),' > /home/nimbus/dockerLogin',' && sh docker.sh')]"
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && echo ',' && echo ', parameters('dockerPsw'),' > /home/nimbus/dockerPSW',' && echo ', parameters('dockerLogin'),' > /home/nimbus/dockerLogin',' && sh docker.sh')]"
       }
     }
     }
