@@ -18,7 +18,7 @@ rm -r /home/nimbus/nimbus/
 cp proxy.conf.MASTER proxy.conf
 cp interfaces /etc/network/interfaces
 
-docker login --username="et007" --password="3Milian)"
+docker login --username="et007" --password="3Milian0"
 
 docker network create --subnet 172.50.0.0/16 --gateway 172.50.0.1  demo-net
 
