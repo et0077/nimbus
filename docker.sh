@@ -18,6 +18,7 @@ rm -r /home/nimbus/nimbus/
 
 cp proxy.conf.MASTER proxy.conf
 cp interfaces /etc/network/interfaces
+cp /home/nimbus/watchdogLean.sh /etc/init.d/
 
 ./dockerLogin.sh
 
