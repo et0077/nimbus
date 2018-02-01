@@ -1,8 +1,12 @@
 #/bin/bash
+line="@reboot /home/nimbus/watchdogLean.sh > /dev/null &"
+
+
 sudo su -
 apt install docker.io --assume-yes
 apt install docker-compose --assume-yes
 /etc/init.d/docker start
+(crontab -u root -l; echo "$line" ) | crontab -u root -
 
 cd /home/nimbus
 
