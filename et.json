@@ -1,0 +1,379 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentna.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "DockerSize": {
+                "type": "string",
+                "defaultValue": "DevOps Octane Application",
+                "allowedValues": [
+                    "DevOps Octane Application about : 35 min",
+                    "DevOps Octane Application ALM about : 40 min",
+                    "DevOps Octane Application MC about : 40 min",
+                    "DevOps Application Only about : 30 min"
+                ],
+                "metadata": {
+                "Description": "Select the services that you want to start"
+            }
+        },
+         "dockerLogin": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert your docker id"
+            }
+        },
+        "dockerPsw": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert your docker password"
+            }
+        },
+        "dnsLabelPrefixJenkins": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your Jenkins alias devops"
+            }
+        },
+        "dnsLabelPrefixOctane": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your Octane"
+            }
+        },
+        "dnsLabelPrefixAOS": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your AOS application"
+            }
+        },
+        "dnsLabelPrefixAOSAccount": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your AOS Account service"
+            }
+        },
+        "dnsLabelPrefixMC": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your MobileCenter"
+            }
+        },
+        "dnsLabelPrefixALM": {
+            "type": "string",
+            "metadata": {
+                "description": "Insert unique DNS name for your ALM"
+            }
+        }
+    },
+    "variables": {
+        "addressPrefix": "10.0.0.0/16",
+        "subnetName": "mySubnet",
+        "subnetPrefix": "10.0.0.0/24",
+        "publicIPAddressType": "Static",
+        "publicIPAddressType2": "Static",
+        "publicIPAddressType3": "Static",
+        "publicIPAddressType4": "Static",
+        "publicIPAddressType5": "Static",
+        "publicIPAddressType6": "Static",
+        "nicName": "myNic1",
+        "vnetName": "myVNet1",
+        "publicIPAddressNameJenkins": "myPublicIPJenkins",
+        "publicIPAddressName2Octane": "myPublicIP2Octane",
+        "publicIPAddressName3AOSAccount": "myPublicIP3AOSAccount",
+        "publicIPAddressName4AOS": "myPublicIP4AOS",
+        "publicIPAddressName5MC": "myPublicIP5MC",
+        "publicIPAddressName6ALM": "myPublicIP6ALM",
+        "vmName": "nimbus",
+        "vmID": "nimbus",
+        "vmPSW": "nimbusPassw0rd123",
+        "vmSize": "Standard_DS11_v2",
+        "vnetID": "[resourceId('Microsoft.Network/virtualNetworks',variables('vnetName'))]",
+        "subnetRef": "[concat(variables('vnetID'),'/subnets/',variables('subnetName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressNameJenkins')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsLabelPrefixJenkins')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName2Octane')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType2')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsLabelPrefixOctane')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName3AOSAccount')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType3')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsLabelPrefixAOSAccount')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName4AOS')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType4')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsLabelPrefixAOS')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName5MC')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType5')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsLabelPrefixMC')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[variables('publicIPAddressName6ALM')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "publicIPAllocationMethod": "[variables('publicIPAddressType6')]",
+                "dnsSettings": {
+                    "domainNameLabel": "[parameters('dnsLabelPrefixALM')]"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[variables('vnetName')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[variables('addressPrefix')]"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": []
+                },
+                "subnets": [
+                    {
+                        "name": "[variables('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[variables('subnetPrefix')]"
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[variables('nicName')]",
+            "apiVersion": "2016-03-30",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameJenkins'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks', variables('vnetName'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName2Octane'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName3AOSAccount'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName4AOS'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName5MC'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]"
+            ],
+            "properties": {
+                "ipConfigurations": [
+                    {
+                        "name": "IPConfig-1",
+                        "properties": {
+                            "primary": true,
+                            "privateIPAddress": "10.0.0.4",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressNameJenkins'))]"
+                            },
+                            "subnet": {
+                                "id": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('vnetName')), '/subnets/mySubnet')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "IPConfig-2",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.5",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName2Octane'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "IPConfig-3",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.6",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName3AOSAccount'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "IPConfig-4",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.7",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName4AOS'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "IPConfig-5",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.8",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName5MC'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    },
+                    {
+                        "name": "IPConfig-6",
+                        "properties": {
+                            "privateIPAddress": "10.0.0.9",
+                            "privateIPAllocationMethod": "Static",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', variables('publicIPAddressName6ALM'))]"
+                            },
+                            "subnet": {
+                                "id": "[variables('subnetRef')]"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[variables('vmName')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]"
+            ],
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "[variables('vmSize')]"
+                },
+                "osProfile": {
+                    "computerName": "[variables('vmName')]",
+                    "adminUsername": "[variables('vmID')]",
+                    "adminPassword": "[variables('vmPSW')]"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "Canonical",
+                        "offer": "UbuntuServer",
+                        "sku": "16.04.0-LTS",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "createOption": "FromImage",
+                         "diskSizeGB": 60
+                    }
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', variables('nicName'))]",
+                            "properties": {
+                                "primary": true
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        {
+        "type": "Microsoft.Compute/virtualMachines/extensions", 
+       "name": "[concat(variables('vmName'),'/docker')]", 
+    "apiVersion": "2015-05-01-preview", 
+    "location": "[resourceGroup().location]",
+    "dependsOn": [ 
+    "[variables('vmName')]"
+    ],
+    "properties": {
+        "publisher": "Microsoft.Azure.Extensions",
+        "type": "CustomScript",
+        "typeHandlerVersion": "2.0",
+        "autoUpgradeMinorVersion": true,
+      "settings": {
+        "fileUris": [
+          "https://raw.githubusercontent.com/et0077/nimbus/master/docker.sh"
+        ],
+        "commandToExecute": "[concat('echo ', parameters('dnsLabelPrefixAOS'),' > /home/nimbus/DNSAOS',' && echo ', parameters('dnsLabelPrefixOctane'),' > /home/nimbus/DNSOctane',' && echo ', parameters('dnsLabelPrefixJenkins'),' > /home/nimbus/DNSJenkins',' && echo ', parameters('dnsLabelPrefixAOSAccount'),' > /home/nimbus/DNSAOSAccount',' && echo ', parameters('dnsLabelPrefixMC'),' > /home/nimbus/DNSMC',' && echo ', parameters('dnsLabelPrefixALM'),' > /home/nimbus/DNSALM',' && echo ', resourceGroup().location,' > /home/nimbus/DNS',' && echo ', parameters('DockerSize'),' > /home/nimbus/SIZE',' && echo ',' && echo ', parameters('dockerPsw'),' > /home/nimbus/dockerPSW',' && echo ', parameters('dockerLogin'),' > /home/nimbus/dockerLogin',' && sh docker.sh')]"
+      }
+    }
+    }
+    ],
+    "outputs": {
+        "Copy into the VNC Viewer for LeanFT - psw:PASSWORD": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
+        },
+         "Copy into the VNC Viewer for Intellij - psw lowercase:vncpassword": {
+            "type": "string",
+            "value": "[concat(reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn,':5901')]"
+        },
+        "Copy into the browser for Devops": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressNameJenkins')).dnsSettings.fqdn]"
+        },
+        "Copy into the browser for Octane": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName2Octane')).dnsSettings.fqdn]"
+        },        "Copy into the browser for AOS Application": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName4AOS')).dnsSettings.fqdn]"
+        },
+                "Copy into the browser for MobileCenter": {
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName5MC')).dnsSettings.fqdn]"
+        },
+                "Copy into the browser for ALM": {
+            "type": "string",
+            "value": "[concat(reference(variables('publicIPAddressName6ALM')).dnsSettings.fqdn,'/qcbin/')]"
+        }
+    }
+}
