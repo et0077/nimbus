@@ -8,7 +8,7 @@ upstream aosacc { server 172.50.10.3:8080; }
 
 upstream mc { server 172.50.10.9:8080; }
 
-upstream ppm { server 172.50.12.8:8080; }
+upstream ppm { server 172.50.10.20:8080; }
 
 upstream alm { server 172.50.10.11:8080; }
 
