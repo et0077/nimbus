@@ -38,6 +38,7 @@ ifconfig eth0:7 inet 10.0.0.10
 ./changeProxy.sh
 
 if grep -q PPM /home/nimbus/SIZE
+then
   docker run -d --name octane --hostname octane.aos.com --net demo-net --shm-size=2g --ip=172.50.10.6 --restart=always admpresales/octane:12.55.13.78_dis
   docker run --name ppm -d --shm-size=2g --hostname=ppm.aos.com --net demo-net --ip 172.50.10.20 admpresales/ppm:9.42.0_d
   docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf --restart=always admpresales/azure:nginx
