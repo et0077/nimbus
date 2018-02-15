@@ -84,7 +84,7 @@ location / {
 
 server {
 listen 80;
-server_name ppm.westeurope.cloudapp.azure.com ;
+server_name et1ppm.westeurope.cloudapp.azure.com ;
 location / {
 
       proxy_set_header        Host $host:$server_port;
