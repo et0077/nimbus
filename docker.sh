@@ -94,7 +94,7 @@ then
 else
   if grep -q MC /home/nimbus/SIZE
     then
-      docker run -d --hostname mc.aos.com --name mc --ip=172.50.10.9 --net demo-net --shm-size=2g --restart=always admpresales/mc:2.51_di
+      docker run -d --hostname mc.aos.com --name mc --ip=172.50.10.9 --net demo-net --shm-size=2g --restart=always admpresales/mc:2.53_di
   fi
 fi
 fi
