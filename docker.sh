@@ -78,14 +78,14 @@ docker exec devops sh -c "cd /AOS_Regression_Test_Web/ && git commit -m "ET""
 docker exec devops sh -c "cd /AOS_Regression_Test_Web/ && git push origin master"
 if grep -q Only /home/nimbus/SIZE
 then
-  docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
+  docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3.3_d
   docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net functionaltesting/leanft-chrome:14.01
   docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf --restart=always admpresales/azure:nginx
 else
 docker run -d --name octane --hostname octane.aos.com --net demo-net --shm-size=2g --ip=172.50.10.6 --restart=always admpresales/octane:12.55.25.114_dis
 docker stop octane
 docker start octane
-docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3_v2
+docker run -d --hostname autopass.aos.com --ip=172.50.10.10 --name autopass --net demo-net --restart=always admpresales/autopass:9.3.3_d
 docker run -d --name leanft -p 5900:5900 -e LFT_LIC_SERVER=autopass -e LFT_LIC_ID=23078 -e VERBOSE=true --net demo-net functionaltesting/leanft-chrome:14.01
 docker run -d --name proxy -p 80:80 --net demo-net -v /home/nimbus/proxy.conf:/etc/nginx/conf.d/default.conf --restart=always admpresales/azure:nginx
 if grep -q ALM /home/nimbus/SIZE
