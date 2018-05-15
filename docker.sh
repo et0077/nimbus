@@ -54,7 +54,7 @@ docker run -d --name intellij -p 5901:5901 --net demo-net --user root:root --res
 ./launchAOS.sh
 ./launchAOSnew2
 
-docker run -d --name devops -p 2022:22 --hostname devops.aos.com --ip=172.50.10.5 --net demo-net --restart=always admpresales/devops:1.1.3.4
+docker run -d --name devops -p 2022:22 --hostname devops.aos.com --ip=172.50.10.5 --net demo-net --restart=always admpresales/devops:1.1.2.0
 docker exec devops useradd -m -p $(echo "nimbusPassw0rd123" | openssl passwd -1 -stdin) nimbus
 docker exec devops chown -R nimbus:nimbus /GitRepo
 docker stop devops
